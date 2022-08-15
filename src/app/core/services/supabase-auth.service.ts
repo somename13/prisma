@@ -8,6 +8,11 @@ import { environment } from 'src/environments/environment';
 export class SupabaseAuthService {
   constructor(private http: HttpClient) {}
 
+  getCloudflare() {
+    const url = `/api/data`;
+    return  this.http.get<any>(url)
+  }
+
   login() {
     const URL = environment.supabase.URL + '/auth/v1/token?grant_type=password';
     const email = '';
