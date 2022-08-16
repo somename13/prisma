@@ -7,11 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  name  String?
+  email String  @unique
+}
+
 model Log {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  level   Level
-  message String
-  meta    Json
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  level    Level
+  message  String
+  name     String
+  lastName String
+  meta     Json
 }
 
 enum Level {
