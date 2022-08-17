@@ -19,7 +19,7 @@
 // }
 
 
-import { PrismaClient } from '@prisma/client/edge';
+// import { PrismaClient } from '@prisma/client/edge';
 
 export async function onRequest(
   context: EventPluginContext<any, any, any, any>
@@ -33,28 +33,27 @@ export async function onRequest(
     data, // arbitrary space for passing data between middlewares
   } = context;
 
-  const prisma = new PrismaClient({
-    datasources: {
-      db: {
-        url: env.DATABASE_URL,
-      },
-    },
-  });
+  // const prisma = new PrismaClient({
+  //   datasources: {
+  //     db: {
+  //       url: env.DATABASE_URL,
+  //     },
+  //   },
+  // });
 
   // waitUntil method is used for sending logs, after response is sent
-  waitUntil(
-    prisma.user.create({
-      data: {
-        name: 'Alex Main',
-        email: 'test@gmail.com,',
-      },
-    })
-  );
+  // waitUntil(
+  //   prisma.user.create({
+  //     data: {
+  //       name: 'Alex Main',
+  //       email: 'test@gmail.com,',
+  //     },
+  //   })
+  // );
   const data1 = {
     hello: 'My First Function',
     token: true,
     verified: true,
-    bla: env
   };
   const json = JSON.stringify(data1, null, 2);
 
