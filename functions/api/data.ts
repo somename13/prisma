@@ -54,6 +54,7 @@ export async function onRequest(
     hello: 'My First Function',
     token: true,
     verified: true,
+    bla: env
   };
   const json = JSON.stringify(data1, null, 2);
 
