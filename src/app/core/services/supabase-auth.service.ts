@@ -10,21 +10,21 @@ export class SupabaseAuthService {
 
   getCloudflare() {
     const url = `/api/data`;
-    return  this.http.get<any>(url)
+    return this.http.get<any>(url);
   }
 
-  login() {
-    const URL = environment.supabase.URL + '/auth/v1/token?grant_type=password';
-    const email = '';
-    const password = '';
+  // login() {
+  //   const URL = environment.supabase.URL + '/auth/v1/token?grant_type=password';
+  //   const email = '';
+  //   const password = '';
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        apikey: environment.supabase.PUBLIC_KEY,
-      }),
-    };
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //       apikey: environment.supabase.PUBLIC_KEY,
+  //     }),
+  //   };
 
-    return this.http.post(URL, { email, password }, httpOptions);
-  }
+  //   return this.http.post(URL, { email, password }, httpOptions);
+  // }
 }
