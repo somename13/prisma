@@ -32,7 +32,7 @@ export async function onRequest(
     next, // used for middleware or to fetch assets
     data, // arbitrary space for passing data between middlewares
   } = context;
-
+  // const prisma = new PrismaClient()
   const prisma = new PrismaClient({
     datasources: {
       db: {
@@ -41,15 +41,15 @@ export async function onRequest(
     },
   });
 
-  // waitUntil method is used for sending logs, after response is sent
-  waitUntil(
-    prisma.user.create({
-      data: {
-        name: 'Alex Main',
-        email: 'test@gmail.com,',
-      },
-    })
-  );
+  // // waitUntil method is used for sending logs, after response is sent
+  // waitUntil(
+  //   prisma.user.create({
+  //     data: {
+  //       name: 'Alex Main',
+  //       email: 'test@gmail.com,',
+  //     },
+  //   })
+  // );
   const data1 = {
     hello: 'My First Function',
     token: true,
