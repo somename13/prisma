@@ -1,21 +1,22 @@
 import { PrismaClient } from '@prisma/client/edge';
 
+const prisma = new PrismaClient()
 export async function onRequest(
   context: EventPluginContext<any, any, any, any>
 ) {
-  const { env } = context;
+  // const { env } = context;
   
-  const prisma = new PrismaClient({
-    datasources: {
-      db: {
-        url: env.DATABASE_URL,
-      },
-    },
-  });
+  // const prisma = new PrismaClient({
+  //   datasources: {
+  //     db: {
+  //       url: env.DATABASE_URL,
+  //     },
+  //   },
+  // });
 
   const user = await prisma.user.create({
     data: {
-      name: 'Prod',
+      name: 'Prod 2',
       email: 'test@gmail.com,',
     },
   })
@@ -26,7 +27,6 @@ export async function onRequest(
     hello: 'My First Function',
     token: true,
     verified: true,
-    env,
     user
   };
   const json = JSON.stringify(data, null, 2);
