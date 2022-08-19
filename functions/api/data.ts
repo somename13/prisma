@@ -4,8 +4,6 @@ export async function onRequest(
   context: EventPluginContext<any, any, any, any>
 ) {
   const { env } = context;
-
-  console.log('db url', env.DATABASE_URL);
   
   const prisma = new PrismaClient({
     datasources: {
@@ -15,14 +13,23 @@ export async function onRequest(
     },
   });
 
-  // waitUntil(
-  //   prisma.user.create({
-  //     data: {
-  //       name: 'Alex Main',
-  //       email: 'test@gmail.com,',
-  //     },
-  //   })
-  // );
+  const user = await prisma.user.create({
+    data: {
+      name: 'Prod',
+      email: 'test@gmail.com,',
+    },
+  })
 
-  return new Response('Success');
+  // console.log(user)
+
+  const data = {
+    hello: 'My First Function',
+    token: true,
+    verified: true,
+    env,
+    user
+  };
+  const json = JSON.stringify(data, null, 2);
+
+  return new Response(json);
 }
