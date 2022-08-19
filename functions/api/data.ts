@@ -20,7 +20,7 @@ export async function onRequest(
     },
   })
 
-  // console.log(user)
+  console.log(user)
 
   const data = {
     hello: 'My First Function',
